@@ -55,7 +55,7 @@ VERBOSE_ERROR = 1
 VERBOSE_DEBUG = 2
 VERBOSE_LEVELS = ['Normal', 'Error', 'Debug']
 
-BANNER = """
+BANNER = """ 
   ___ __  __ ___   ___                            
  / __|  \/  | _ ) / __| __ __ _ _ _  _ _  ___ _ _ 
  \__ \ |\/| | _ \ \__ \/ _/ _` | ' \| ' \/ -_) '_|
