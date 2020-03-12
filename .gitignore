@@ -123,3 +123,11 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+*.xml
+
+# PyCharm
+.idea/
+
+.idea/vcs.xml
+.idea/workspace.xml
+.idea/workspace.xml

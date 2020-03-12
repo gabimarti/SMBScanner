@@ -49,7 +49,7 @@ PACKET_SMBV311 =  b'\x00\x00\x00\xc0\xfeSMB@\x00\x00\x00\x00\x00\x00\x00\x00\x00
                   b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x03\x00\n\x00\x00\x00\x00\x00\x01\x00\x00' \
                   b'\x00\x01\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00 '
 
-ENCODING = 'utf-8'                                                  # Encoding for message sended
+ENCODING = 'utf-8'                                                  # Encoding for url
 VERBOSE_NORMAL = 0
 VERBOSE_ERROR = 1
 VERBOSE_DEBUG = 2
@@ -72,9 +72,6 @@ timeout = DEFAULT_TIMEOUT                               # Timeout on port connec
 total_threads_launched = 0                              # Total threads launched
 total_current_threads_running = 0                       # Total threads running at one moment
 max_concurrent_threads = 0                              # Store max concurrent threads
-keyloggers_found = False                                # If keylogger is found
-listen_server_enabled = False                           # Is listen Server Enabled?
-listen_server_instance = None                           # Listen server object
 
 
 ########################################################
