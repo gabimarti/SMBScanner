@@ -126,8 +126,9 @@ dmypy.json
 *.xml
 
 # PyCharm
+.idea
 .idea/
-
+.idea/*.*
 .idea/vcs.xml
 .idea/workspace.xml
 .idea/workspace.xml
