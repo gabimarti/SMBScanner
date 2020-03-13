@@ -15,7 +15,9 @@
 # Created:          12/03/2020
 # License:          GPLv3
 # First Release:    12/03/2020
-# Version:          0.1
+# Version:          0.2
+# Changes:          13/03/2020  v0.2    Redundant text removal.
+#                                       Correction in the thread oversaturation control.
 # -----------------------------------------------------------------------------------------------------------
 
 
@@ -31,11 +33,11 @@ import urllib.request
 # CONSTANTS
 ########################################################
 APPNAME = 'SMB Scanner'                                             # Just a name
-VERSION = 'v0.1'                                                    # Version
+VERSION = 'v0.2'                                                    # Version
 SMB_PORT = 445                                                      # Port to scan
 DEFAULT_TIMEOUT = 3.0                                               # Socket timeout
-MAX_THREADS = 65535                                                 # Maximum simultaneous threads
-TIME_SLEEP = 2.5                                                    # Pause to avoid thread oversaturation
+MAX_THREADS = 16384                                                 # Maximum simultaneous threads
+TIME_SLEEP = 0.1                                                    # Pause to avoid thread oversaturation
 PORT_LIST_SCAN = [SMB_PORT]                                         # List of ports to Scan. For testing multiple ports
 
 # Packet to send and check vuln
@@ -114,7 +116,7 @@ class HostScan(threading.Thread):
         wait = True
         while wait:
             self.lock.acquire()
-            if total_threads_launched < MAX_THREADS:
+            if total_current_threads_running < MAX_THREADS:
                 self.lock.release()
                 wait = False
             else:
@@ -175,7 +177,7 @@ class HostScan(threading.Thread):
         for thread in self.threads:
             thread.join()
 
-        # Write out the ports that are open
+        # Write out the ports that are vulnerable
         self.write()
 
 
@@ -196,9 +198,6 @@ class RangeScan(threading.Thread):
         self.hosts_scanned = 0                                      # Total hosts scanned
 
     def start(self):
-        if self.verbose >= 2:
-            print('This host is {} ({}) '.format(self.own_host, self.own_ip))
-
         self.hosts_scanned = 0
         for ip in self.all_hosts:                                   # Scan the network range
             # Thread host port scan
