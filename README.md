@@ -7,3 +7,4 @@ https://github.com/ollypwn/SMBGhost
 
 I have added multithreading capability to make scanning faster.
 
+![Screenshot](SMBScanner.png "Screenshot example")
