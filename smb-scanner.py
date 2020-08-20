@@ -215,6 +215,8 @@ class RangeScan(threading.Thread):
 # FUNCTIONS
 ########################################################
 
+
+
 # Get the external ip
 def get_external_ip():
     external_ip = urllib.request.urlopen('https://ident.me').read().decode(ENCODING)
